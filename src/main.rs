@@ -5,7 +5,11 @@ mod common;
 mod config;
 mod error;
 mod opt;
+mod weather;
 
 fn main() {
-  Opt::from_args().run();
+  match Opt::from_args().run() {
+    Ok(()) => {}
+    Err(e) => eprintln!("{}", e),
+  }
 }
