@@ -25,7 +25,7 @@ impl Opt {
 
     match self {
       Opt::Display { city, units, lang } => {
-        if !city.is_some() && !units.is_some() && !lang.is_some() {
+        if city.is_none() && units.is_none() && lang.is_none() {
           return Self::display_from_config(client);
         }
         Self::display(Params::new(city, units, lang), client)?

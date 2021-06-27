@@ -1,4 +1,4 @@
-all: build test clippy fmt-check
+ci: build test clippy fmt-check
 
 build:
 	cargo build
@@ -10,7 +10,7 @@ clippy:
   cargo clippy --all-targets --all-features
 
 fmt-check:
-  cargo fmt --all -- --check
+  cargo +nightly fmt --all -- --check
   @echo formatting check done
 
 run subcommand *args:

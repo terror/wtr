@@ -53,8 +53,7 @@ mod tests {
 
     assert!(config.is_ok());
 
-    if let Some(_) = Config::path().unwrap() {
-    } else {
+    if Config::path().unwrap().is_some() {
       let config = config.unwrap();
       assert_eq!(config.city.unwrap(), String::from("toronto"));
       assert_eq!(config.units.unwrap(), String::from("standard"));

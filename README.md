@@ -1,4 +1,4 @@
-## `wtr`
+## wtr 🌩️
 
 A simple command-line tool for displaying current **w**ea**t**he**r** information.
 
