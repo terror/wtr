@@ -2,18 +2,18 @@ use crate::common::*;
 
 #[derive(Debug, Deserialize)]
 pub struct WeatherData {
-  clouds:     Clouds,
-  coord:      Coord,
-  main:       Main,
-  sys:        Sys,
-  weather:    Vec<Weather>,
-  wind:       Wind,
-  cod:        i64,
-  dt:         i128,
-  id:         i128,
-  name:       String,
-  timezone:   i64,
-  visibility: i64,
+  pub clouds:     Clouds,
+  pub coord:      Coord,
+  pub main:       Main,
+  pub sys:        Sys,
+  pub weather:    Vec<Weather>,
+  pub wind:       Wind,
+  pub cod:        i64,
+  pub dt:         i128,
+  pub id:         i128,
+  pub name:       String,
+  pub timezone:   i64,
+  pub visibility: i64,
 }
 
 #[derive(Debug, Deserialize)]
@@ -24,10 +24,10 @@ pub struct Coord {
 
 #[derive(Debug, Deserialize)]
 pub struct Weather {
-  id:          i64,
-  main:        String,
-  description: String,
-  icon:        String,
+  pub id:          i64,
+  pub main:        String,
+  pub description: String,
+  pub icon:        String,
 }
 
 #[derive(Debug, Deserialize)]

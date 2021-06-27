@@ -35,8 +35,9 @@ impl Opt {
     }
 
     let data: WeatherData = client.get(params)?;
+    let weather: &Weather = &data.weather[0];
 
-    println!("{:?}", data);
+    Printer::new(&data, Ascii::from(weather.main.to_owned())).print();
 
     Ok(())
   }

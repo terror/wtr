@@ -1,5 +1,5 @@
 // stdlib
-pub use std::{collections::BTreeMap, env};
+pub use std::{collections::BTreeMap, env, fmt};
 
 // dependencies
 pub use dotenv::dotenv;
@@ -13,4 +13,11 @@ pub use structopt::StructOpt;
 pub(crate) use crate::error;
 
 // structs and enums
-pub use crate::{client::Client, error::Error, opt::Opt, weather::WeatherData};
+pub use crate::{
+  ascii::Ascii,
+  client::Client,
+  error::Error,
+  opt::Opt,
+  printer::Printer,
+  weather::{Weather, WeatherData},
+};
