@@ -10,5 +10,7 @@ impl<'a> Printer<'a> {
     Self { data, ascii }
   }
 
-  pub fn print(&self) {}
+  pub fn print(&self) {
+    println!("{}", self.ascii);
+  }
 }

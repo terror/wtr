@@ -15,11 +15,13 @@ impl Client {
     }
   }
 
-  pub fn get(&self, params: BTreeMap<&str, &str>) -> Result<WeatherData, Error> {
+  pub fn get(&self, params: Params) -> Result<WeatherData, Error> {
     let mut request_url = String::from(&self.base_url);
 
-    for (key, val) in &params {
-      request_url.push_str(&format!("{}={}&", key, val));
+    for (key, val) in &params.get() {
+      if let Some(val) = val {
+        request_url.push_str(&format!("{}={}&", key, val));
+      }
     }
 
     request_url.push_str(&format!("appid={}", self.api_key));

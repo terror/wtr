@@ -17,7 +17,7 @@ pub use crate::{
   ascii::Ascii,
   client::Client,
   error::Error,
-  opt::Opt,
+  opt::{Opt, Params},
   printer::Printer,
   weather::{Weather, WeatherData},
 };
