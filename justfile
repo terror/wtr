@@ -24,3 +24,6 @@ check:
 
 watch +COMMAND='test':
 	cargo watch --clear --exec "{{COMMAND}}"
+
+usage:
+	cargo run -- --help | pbcopy

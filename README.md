@@ -15,8 +15,7 @@ FLAGS:
     -V, --version    Prints version information
 
 SUBCOMMANDS:
-    display    Main subcommand, display weather in the terminal
-    json       View current weather JSON data
+    display    Main subcommand, display weather information in the terminal
     help       Prints this message or the help of the given subcommand(s)
 ```
 
