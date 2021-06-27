@@ -6,6 +6,7 @@ mod common;
 mod config;
 mod error;
 mod opt;
+mod params;
 mod printer;
 mod weather;
 

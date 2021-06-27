@@ -16,4 +16,13 @@ pub enum Error {
 
   #[snafu(display("Unable to parse JSON data."))]
   ParseError { source: serde_json::Error },
+
+  #[snafu(display(""))]
+  BaseDirectoriesError { source: xdg::BaseDirectoriesError },
+
+  #[snafu(display("Unable to load configuration file from: {}", path.display()))]
+  LoadConfig {
+    path:   PathBuf,
+    source: std::io::Error,
+  },
 }

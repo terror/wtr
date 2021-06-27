@@ -32,12 +32,12 @@ pub struct Weather {
 
 #[derive(Debug, Deserialize)]
 pub struct Main {
-  temp:       f64,
-  feels_like: f64,
-  temp_min:   f64,
-  temp_max:   f64,
-  pressure:   i64,
-  humidity:   i64,
+  pub temp:       f64,
+  pub feels_like: f64,
+  pub temp_min:   f64,
+  pub temp_max:   f64,
+  pub pressure:   i64,
+  pub humidity:   i64,
 }
 
 #[derive(Debug, Deserialize)]

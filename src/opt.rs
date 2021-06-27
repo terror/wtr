@@ -1,41 +1,20 @@
 use crate::common::*;
 
-pub struct Params {
-  city:  Option<String>,
-  units: Option<String>,
-  lang:  Option<String>,
-}
-
-impl Params {
-  pub fn new(city: Option<String>, units: Option<String>, lang: Option<String>) -> Self {
-    Self { city, units, lang }
-  }
-
-  pub fn get(&self) -> BTreeMap<&str, &Option<String>> {
-    let mut params: BTreeMap<&str, &Option<String>> = BTreeMap::new();
-
-    params.insert("q", &self.city);
-    params.insert("units", &self.units);
-    params.insert("lang", &self.lang);
-
-    params
-  }
-}
-
 #[derive(StructOpt, Debug)]
 #[structopt(name = "wtr")]
 pub enum Opt {
   #[structopt(name = "display")]
   /// Main subcommand, display weather information in the terminal
   Display {
-    city:  String,
-    units: Option<String>,
-    lang:  Option<String>,
-  },
+    #[structopt(short = "c", long = "city")]
+    city: Option<String>,
 
-  #[structopt(name = "json")]
-  /// View current weather JSON data
-  Json { city: String, lang: Option<String> },
+    #[structopt(short = "u", long = "units")]
+    units: Option<String>,
+
+    #[structopt(short = "l", long = "lang")]
+    lang: Option<String>,
+  },
 }
 
 impl Opt {
@@ -46,9 +25,11 @@ impl Opt {
 
     match self {
       Opt::Display { city, units, lang } => {
-        Self::display(Params::new(Some(city), units, lang), client)?
+        if !city.is_some() && !units.is_some() && !lang.is_some() {
+          return Self::display_from_config(client);
+        }
+        Self::display(Params::new(city, units, lang), client)?
       }
-      Opt::Json { city, lang } => Self::json(&city, &lang, client),
     }
 
     Ok(())
@@ -61,5 +42,9 @@ impl Opt {
     Ok(())
   }
 
-  fn json(city: &str, lang: &Option<String>, client: Client) {}
+  fn display_from_config(client: Client) -> Result<(), Error> {
+    let config = Config::load()?;
+    Self::display(Params::new(config.city, config.units, config.lang), client)?;
+    Ok(())
+  }
 }

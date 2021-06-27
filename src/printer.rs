@@ -11,6 +11,18 @@ impl<'a> Printer<'a> {
   }
 
   pub fn print(&self) {
-    println!("{}", self.ascii);
+    println!(
+      "{} {}",
+      self.ascii,
+      format!(
+        "{}\n{}\n{}: {}\n{}\n{:?}",
+        self.data.name,
+        self.data.main.temp,
+        self.data.weather[0].main,
+        self.data.weather[0].description,
+        self.data.main.pressure,
+        Utc::now()
+      )
+    );
   }
 }
